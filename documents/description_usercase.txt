@@ -1,0 +1,2 @@
+buscar videos na api do yutube de acordo com uma pesquisa.
+favoritar video na api do yutube.
