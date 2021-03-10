@@ -25,12 +25,11 @@ class VideoModal extends Video {
   }
 
   factory VideoModal.fromMap(Map<String, dynamic> map) {
-    if (map == null) return null;
-
+    // if (map == null) return null;
     return VideoModal(
       id: map['id']['videoId'],
       title: map['snippet']['title'],
-      thumb: map['snippet']['high']['url'],
+      thumb: map['snippet']['thumbnails']['high']['url'],
       channel: map['snippet']['channelTitle'],
     );
   }

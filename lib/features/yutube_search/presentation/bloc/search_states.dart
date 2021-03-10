@@ -15,7 +15,7 @@ class ErrorSearchState implements SearchState {
   const ErrorSearchState(this.error);
 }
 
-class SuccssSearchState implements SearchState {
+class SuccessSearchState implements SearchState {
   final List<Video> video;
-  const SuccssSearchState(this.video);
+  const SuccessSearchState(this.video);
 }

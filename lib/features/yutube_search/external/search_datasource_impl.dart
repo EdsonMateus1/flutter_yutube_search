@@ -12,10 +12,10 @@ class SearchDataSourceImpl implements ISearchDataSource {
           "https://www.googleapis.com/youtube/v3/search?part=snippet&q=$search&type=video&key=${Api.API_KEY}&maxResults=10";
       final res = await http.get(url);
       if (res.statusCode == 200) {
-        Map<String, dynamic> data = jsonDecode(res.body);
+        var data = jsonDecode(res.body);
+        var jsonList = data["items"] as List;
         List<VideoModal> videos =
-            data["items"].map((map) => VideoModal.fromMap(map)).toList();
-        print(videos);
+            jsonList.map((map) => VideoModal.fromMap(map)).toList();
         return videos;
       } else {
         throw Exception("erro SearchDataSourceImpl status:${res.statusCode}");
