@@ -5,8 +5,9 @@ import 'package:bloc_yutube_shearch/features/yutube_search/domain/repositories/s
 import 'package:bloc_yutube_shearch/features/yutube_search/domain/usecases/search_usercase.dart';
 import 'package:bloc_yutube_shearch/features/yutube_search/external/search_datasource_impl.dart';
 import 'package:bloc_yutube_shearch/features/yutube_search/presentation/app/app_widiget.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
+import 'package:bloc_yutube_shearch/features/yutube_search/presentation/bloc/search_bloc.dart';
+import 'package:bloc_yutube_shearch/features/yutube_search/presentation/pages/yutube_search_page.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
 class AppModule extends MainModule {
@@ -15,7 +16,8 @@ class AppModule extends MainModule {
         Bind<ISearch>((i) => SearchImpl(repository: i<ISearchRepository>())),
         Bind<ISearchRepository>(
             (i) => SearchRepositoryImpl(datasource: i<ISearchDataSource>())),
-        Bind<ISearchDataSource>((i) => SearchDataSourceImpl())
+        Bind<ISearchDataSource>((i) => SearchDataSourceImpl()),
+        Bind<SearchBloc>((i) => SearchBloc(search: i<ISearch>()))
       ];
 
   @override
@@ -25,7 +27,7 @@ class AppModule extends MainModule {
   List<ModularRouter> get routers => [
         ModularRouter(
           Modular.initialRoute,
-          child: (context, args) => Text("teste"),
+          child: (context, args) => YutubeSearchPage(),
         )
       ];
 }
