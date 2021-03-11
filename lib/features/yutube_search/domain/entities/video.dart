@@ -1,12 +1,12 @@
 import 'package:flutter/widgets.dart';
 
-class Video {
+class VideoEntity {
   final String id;
   final String title;
   final String thumb;
   final String channel;
 
-  Video({
+  VideoEntity({
     @required this.id,
     @required this.title,
     @required this.thumb,

@@ -7,7 +7,7 @@ class SearchImpl implements ISearch {
   final ISearchRepository repository;
   SearchImpl({@required this.repository});
   @override
-  Future<List<Video>> call(String search) async {
+  Future<List<VideoEntity>> call(String search) async {
     return await repository.search(search);
   }
 }

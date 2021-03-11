@@ -16,6 +16,6 @@ class ErrorSearchState implements SearchState {
 }
 
 class SuccessSearchState implements SearchState {
-  final List<Video> video;
+  final List<VideoEntity> video;
   const SuccessSearchState(this.video);
 }

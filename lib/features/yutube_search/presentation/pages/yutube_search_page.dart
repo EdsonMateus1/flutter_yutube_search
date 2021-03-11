@@ -11,6 +11,12 @@ class YutubeSearchPage extends StatefulWidget {
 class _YutubeSearchPageState
     extends ModularState<YutubeSearchPage, SearchBloc> {
   @override
+  void dispose() {
+    controller.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -23,7 +29,7 @@ class _YutubeSearchPageState
             children: [
               TextField(
                 onChanged: (value) => controller.add(value),
-                decoration: InputDecoration(labelText: "digite"),
+                decoration: InputDecoration(labelText: "digite.."),
               ),
               Expanded(
                   child: StreamBuilder<SearchState>(
@@ -34,11 +40,17 @@ class _YutubeSearchPageState
                   if (state is ErrorSearchState) {
                     return Text("algo deu errado");
                   } else if (state is StartSearchState) {
-                    return Text("digite...");
+                    return Text(
+                      "faca sua busca.....",
+                      style: TextStyle(
+                        fontSize: 20,
+                        letterSpacing: 1,
+                      ),
+                    );
                   } else if (state is LoadingSearchState) {
                     return CircularProgressIndicator();
                   } else if (state is SuccessSearchState) {
-                    return Text("video");
+                    return Text("${state.video[0].title}");
                   } else {
                     return Container();
                   }

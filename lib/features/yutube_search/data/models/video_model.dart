@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'package:flutter/foundation.dart';
 import 'package:bloc_yutube_shearch/features/yutube_search/domain/entities/video.dart';
 
-class VideoModal extends Video {
+class VideoModal extends VideoEntity {
   final String id;
   final String title;
   final String thumb;
@@ -25,7 +25,7 @@ class VideoModal extends Video {
   }
 
   factory VideoModal.fromMap(Map<String, dynamic> map) {
-    // if (map == null) return null;
+    if (map == null) return null;
     return VideoModal(
       id: map['id']['videoId'],
       title: map['snippet']['title'],
